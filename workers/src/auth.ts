@@ -61,7 +61,7 @@ export async function authorize(request: Request, env: Env, server: ReturnType<t
       const details = await oauth.describeConsent(auth);
       const consent = await oauth.beginConsent(auth);
       consent.headers.set("Content-Type", "text/html; charset=utf-8");
-      consent.headers.set("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'");
+      consent.headers.set("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'; form-action 'self' https://chatgpt.com https://chat.openai.com; frame-ancestors 'none'; base-uri 'none'");
       consent.headers.set("Referrer-Policy", "same-origin");
       return new Response(page(details, consent.handle), { headers: consent.headers });
     }

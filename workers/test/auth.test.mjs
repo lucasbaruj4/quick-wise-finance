@@ -58,6 +58,7 @@ test("real Worker OAuth: consent, PKCE, persistence, refresh, and revocation", a
   const consent = await request(`/authorize?${params}`);
   assert.equal(consent.status, 200);
   assert.equal(consent.headers.get("referrer-policy"), "same-origin");
+  assert.ok(consent.headers.get("content-security-policy").includes("form-action 'self' https://chatgpt.com https://chat.openai.com;"));
   const html = await consent.text();
   assert.ok(!html.includes("<script>bad</script>"));
   const handle = html.match(/name="handle" value="([^"]+)"/)?.[1];
