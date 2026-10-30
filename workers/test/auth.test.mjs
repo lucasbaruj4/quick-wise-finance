@@ -57,12 +57,14 @@ test("real Worker OAuth: consent, PKCE, persistence, refresh, and revocation", a
     code_challenge: challenge, code_challenge_method: "S256" });
   const consent = await request(`/authorize?${params}`);
   assert.equal(consent.status, 200);
+  assert.equal(consent.headers.get("referrer-policy"), "same-origin");
   const html = await consent.text();
   assert.ok(!html.includes("<script>bad</script>"));
   const handle = html.match(/name="handle" value="([^"]+)"/)?.[1];
   assert.ok(handle);
   const cookie = consent.headers.get("set-cookie").split(";")[0];
   const approval = { handle, password, decision: "approve" };
+  assert.equal((await request("/authorize", form(approval, { Origin: "null", Cookie: cookie }))).status, 403);
   assert.equal((await request("/authorize", form(approval, { Origin: "https://attacker.example", Cookie: cookie }))).status, 403);
   assert.equal((await request("/authorize", form(approval, { Origin: origin }))).status, 400);
   assert.equal((await request("/authorize", form({ ...approval, handle: "wrong" }, { Origin: origin, Cookie: cookie }))).status, 400);
