@@ -24,3 +24,9 @@ bridge-tokens.json
 session.json
 access-report.json
 approval.url
+node_modules/
+.wrangler/
+.dev.vars
+.dev.vars.*
+workers/worker-configuration.d.ts
+workers/dist/

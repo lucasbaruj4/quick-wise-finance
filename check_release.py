@@ -10,6 +10,10 @@ PUBLIC_FILES = {
     'requirements.txt', 'setup.sh', 'wizard.sh', 'settings.py', 'install_tunnel.py',
     'connection.py', 'local_tls.py', 'policy_pages.py', 'access_check.py',
     'bridge.py', 'bridge_auth.py', 'wise_tools.py', 'check_bridge.py', 'check_release.py', 'check_runtime.py',
+    'workers/package.json', 'workers/package-lock.json', 'workers/tsconfig.json',
+    'workers/wrangler.jsonc', 'workers/deploy.py', 'workers/import_session.py', 'workers/README.md',
+    'workers/src/index.ts', 'workers/src/auth.ts', 'workers/src/mcp.ts', 'workers/src/bank.ts',
+    'workers/test/auth.test.mjs', 'workers/test/bank.test.mjs',
 }
 PATTERNS = [
     (re.compile(rb'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'), 'private key'),
