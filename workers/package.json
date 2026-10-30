@@ -1,0 +1,31 @@
+{
+  "name": "quick-wise-finance-worker",
+  "version": "1.0.0",
+  "description": "Persistent read-only Wise MCP server for Cloudflare Workers",
+  "scripts": {
+    "types": "wrangler types",
+    "check": "npm run types && tsc --noEmit",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "pretest": "npm run build",
+    "test": "node --test test/*.test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "1.2.4",
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261030.1",
+    "@types/node": "26.6.6",
+    "miniflare": "5.20261023.3-beta",
+    "typescript": "7.0.2",
+    "wrangler": "4.156.0"
+  },
+  "private": true
+}

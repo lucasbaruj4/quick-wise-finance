@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "quick-wise-finance",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": { "PUBLIC_ORIGIN": "https://quick-wise-finance.example.workers.dev" },
+  "kv_namespaces": [{ "binding": "OAUTH_KV" }],
+  "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "5385001", "simple": { "limit": 10, "period": 60 } }],
+  "secrets": { "required": ["ENABLE_BANKING_APP_ID", "BANK_PRIVATE_KEY", "BANK_SESSION", "OWNER_PASSWORD_SHA256"] },
+  "observability": { "enabled": true, "head_sampling_rate": 1, "logs": { "invocation_logs": false } }
+}

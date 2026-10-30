@@ -2,7 +2,7 @@
 
 Read your Wise balances, Jars, and transactions from ChatGPT through a personal, read-only MCP connection.
 
-A guided setup creates **your own** Enable Banking application and bank authorization. An OAuth-protected local bridge exposes three tools:
+A guided setup creates **your own** Enable Banking application and bank authorization. An OAuth-protected server exposes three tools:
 
 | Tool | Returns |
 | --- | --- |
@@ -11,6 +11,8 @@ A guided setup creates **your own** Enable Banking application and bank authoriz
 | `get_transactions` | A page of incoming or outgoing transactions for an account and date range |
 
 No payment or transfer tools. No bundled accounts, credentials, or financial records. Each installation is for one account owner.
+
+For a fixed address that works while your computer is off, use the [optional Cloudflare server](workers/README.md) after bank setup. It stores the approved session as Worker secrets and OAuth access in persistent KV storage. A free Cloudflare account is sufficient; platform limits still apply. The local connection below remains available for setup and local use.
 
 ## Requirements
 
